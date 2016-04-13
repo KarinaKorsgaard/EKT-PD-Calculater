@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1575CF625B6B60A397992BEDD4E2C1728BC43047",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "ED0D7310E8F367150F747C35EF628DA91C6B265B" : 0,
+    "1575CF625B6B60A397992BEDD4E2C1728BC43047" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9A157905-3482-45E1-A8B8-612CC03F9ED2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "ED0D7310E8F367150F747C35EF628DA91C6B265B" : "..\/..\/addons\/ofxClipboard",
+    "1575CF625B6B60A397992BEDD4E2C1728BC43047" : "OSCtoVDMX\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "OSCtoVDMX",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OSCtoVDMX.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KarinaKorsgaard\/calculator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1575CF625B6B60A397992BEDD4E2C1728BC43047"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/elliotwoods\/ofxClipboard.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ED0D7310E8F367150F747C35EF628DA91C6B265B"
+    }
+  ]
+}
