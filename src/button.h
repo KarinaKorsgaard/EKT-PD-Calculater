@@ -28,7 +28,7 @@ class Button {
             rotation = 0;
             previousRotation = rot;
         }
-        else if((previousRotation-rot)>3){
+        else if((previousRotation-rot)>0.2){
             rotation = 1;
             previousRotation = rot;
         }else{
