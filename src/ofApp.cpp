@@ -57,7 +57,7 @@ void ofApp::update(){
                     if(msg.getArgAsInt32(0)==1){
                         
                         buttons[i*6+u].on=true;
-                        sendMessage.setAddress("/toVDMX/"+ofToString(i)+"/"+ofToString(u)+"/on");
+                        sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/on");
                         sendMessage.addInt32Arg(1);
                         bundle.addMessage(sendMessage);
                         sendMessage.clear();
@@ -66,7 +66,7 @@ void ofApp::update(){
                     }else if(msg.getArgAsInt32(0)==0){
                         buttons[i*6+u].on=false;
                         msg.clear();
-                        sendMessage.setAddress("/toVDMX/"+ofToString(i)+"/"+ofToString(u)+"/on");
+                        sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/on");
                         sendMessage.addInt32Arg(0);
                         bundle.addMessage(sendMessage);
                         sendMessage.clear();
@@ -79,20 +79,20 @@ void ofApp::update(){
                 else if (msg.getAddress()==tablenames[i]+othernames[u]){
                     
                     buttons[i*6+u].x=msg.getArgAsFloat(0)/127;
-                    sendMessage.setAddress("/toVDMX/"+ofToString(i)+"/"+ofToString(u)+"/X");
+                    sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/X");
                     sendMessage.addFloatArg(buttons[i*6+u].x);
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
                     
                     buttons[i*6+u].y=(127-msg.getArgAsFloat(1))/127;
-                    sendMessage.setAddress("/toVDMX/"+ofToString(i)+"/"+ofToString(u)+"/Y");
+                    sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/Y");
                     sendMessage.addFloatArg(buttons[i*6+u].y);
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
                     
                     buttons[i*6+u].rot=msg.getArgAsFloat(2)/(2*PI);
-                    sendMessage.setAddress("/toVDMX/"+ofToString(i)+"/"+ofToString(u)+"/ROT");
-                    sendMessage.addFloatArg(buttons[i*6+u].rot);
+                    sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/ROT");
+                    sendMessage.addFloatArg(buttons[i*6+u].rotation);
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
                     
@@ -130,6 +130,7 @@ void ofApp::update(){
         
         
         for(int i = 0; i<buttons.size();i++){
+            buttons[i].update();
             if(buttons[i].on){
                 total ++;
                 xAdded += buttons[i].x;
@@ -170,7 +171,7 @@ void ofApp::update(){
         bundle.addMessage(m);
         m.clear();
         
-        m.setAddress("/Rot");
+        m.setAddress("/R");
         m.addFloatArg(rotAdded);
         for(int i = 0; i<sepAdddedX.size();i++){
             m.addFloatArg(sepAdddedRot[i]);

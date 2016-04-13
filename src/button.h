@@ -19,6 +19,21 @@ class Button {
     float x,y,rot;
     bool on;
     int obj,table;
+    float rotation;
+    float previousRotation;
+    
+    void update(){
+        rotation = rot;
+        if((previousRotation-rot)<0){
+            rotation = 0;
+            previousRotation = rot;
+        }
+        if((previousRotation-rot)>3){
+            rotation = 1;
+            previousRotation = rot;
+        }
+        previousRotation = rot;
+    }
 };
 
 #endif /* button_h */
