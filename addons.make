@@ -1,0 +1,3 @@
+ofxClipboard
+ofxGui
+ofxOsc
