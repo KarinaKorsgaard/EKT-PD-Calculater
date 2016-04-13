@@ -14,15 +14,15 @@ void ofApp::setup(){
     clipboardContent = ofxClipboard::paste(); //<<<<<<<<<<<<<<<<<
     sendTo = ofToInt(clipboardContent);
     
-    newClipboardContent = ofSystemTextBoxDialog("IP");
-    
-    ofxClipboard::copy(newClipboardContent); //<<<<<<<<<<<<<<<<<
-    clipboardContent = ofxClipboard::paste(); //<<<<<<<<<<<<<<<<<
-    host = ofToInt(clipboardContent);
+//    newClipboardContent = ofSystemTextBoxDialog("IP");
+//    
+//    ofxClipboard::copy(newClipboardContent); //<<<<<<<<<<<<<<<<<
+//    clipboardContent = ofxClipboard::paste(); //<<<<<<<<<<<<<<<<<
+//    host = ofToInt(clipboardContent);
     
     nameStuff();
     receiver.setup(port);
-    sender.setup(host,sendTo);
+    sender.setup(HOST,sendTo);
     
     for(int i = 0; i<12;i++){
         for(int u = 0; u<6;u++){
@@ -45,7 +45,7 @@ void ofApp::update(){
         ofxOscMessage sendMessage;
         
         receiver.getNextMessage(msg);
-
+        oscMessage = msg.getAddress();
         for(int i = 0; i<tablenames.size(); i++){
             for(int u = 0; u<othernames.size(); u++){
                 
@@ -188,7 +188,8 @@ void ofApp::draw(){
     
     ofDrawBitmapString("routing osc to " +ofToString(sendTo), 10, 20);
     ofDrawBitmapString("from port " +ofToString(port), 10, 40);
-    ofDrawBitmapString("on ip " +host, 10, 60);
+    ofDrawBitmapString("on ip localhost", 10, 60);
+    ofDrawBitmapString(oscMessage, 10, 80);
 }
 
 //--------------------------------------------------------------

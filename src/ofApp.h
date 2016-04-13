@@ -5,7 +5,7 @@
 #include "ofxClipboard.h"
 #include "button.h"
 
-//#define HOST "localhost.h"
+#define HOST "localhost.h"
 
 class ofApp : public ofBaseApp{
 
@@ -33,12 +33,14 @@ class ofApp : public ofBaseApp{
     vector<string> othernames;
     
     void nameStuff();
-    string host;
+    //string host;
     int port;
     int sendTo;
     bool setupPort;
     ofxOscReceiver receiver;
     ofxOscSender sender;
+    
+    string oscMessage;
     
 
 };
