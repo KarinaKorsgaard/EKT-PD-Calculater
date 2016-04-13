@@ -20,20 +20,29 @@ class Button {
     bool on;
     int obj,table;
     float rotation;
-    float previousRotation;
+    float prot;
     
     void update(){
-        if((previousRotation-rot)<-0.8){
-            rotation = 0;
-            previousRotation = rot;
+        if(abs(prot-rot)<0.5 && prot!=0 && prot!=rot){
+            
+            if(prot>rot){
+                rotation+=0.1;
+            }
+            
+            
+            if(prot<rot){
+                rotation-=0.1;
+            }
+            
         }
-        else if((previousRotation-rot)>0.8){
-            rotation = 1;
-            previousRotation = rot;
-        }else{
-            rotation += (rot-previousRotation);
-            previousRotation = rot;
+        if(rotation > 1)rotation = 1;
+        if(rotation < 0)rotation = 0;
+
+        if(!on){
+            rotation=0;
+            prot=0;
         }
+        prot=rot;
         
     }
 };
