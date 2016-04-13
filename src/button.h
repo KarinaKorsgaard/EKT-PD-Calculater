@@ -26,12 +26,12 @@ class Button {
         if(abs(prot-rot)<0.5 && prot!=0 && prot!=rot){
             
             if(prot>rot){
-                rotation+=0.1;
+                rotation+=abs(prot-rot);
             }
             
             
             if(prot<rot){
-                rotation-=0.1;
+                rotation-=abs(prot-rot);
             }
             
         }
