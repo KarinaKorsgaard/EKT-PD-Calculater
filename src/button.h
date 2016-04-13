@@ -23,16 +23,19 @@ class Button {
     float previousRotation;
     
     void update(){
-        rotation = rot;
+        
         if((previousRotation-rot)<0){
             rotation = 0;
             previousRotation = rot;
         }
-        if((previousRotation-rot)>3){
+        else if((previousRotation-rot)>3){
             rotation = 1;
             previousRotation = rot;
+        }else{
+            rotation += (previousRotation-rot);
+            previousRotation = rot;
         }
-        previousRotation = rot;
+        
     }
 };
 
