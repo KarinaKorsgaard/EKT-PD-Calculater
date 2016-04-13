@@ -41,6 +41,6 @@ class ofApp : public ofBaseApp{
     ofxOscSender sender;
     
     string oscMessage;
-    
+    string senddedoscMessage;
 
 };

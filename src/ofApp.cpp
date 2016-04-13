@@ -174,7 +174,7 @@ void ofApp::update(){
     }
     bundle.addMessage(m);
     m.clear();
-    
+    senddedoscMessage = ofToString(total);
     sender.sendBundle(bundle);
     
     ofSetWindowTitle("Framerate: "+ofToString(ofGetFrameRate(),0));
@@ -190,6 +190,7 @@ void ofApp::draw(){
     ofDrawBitmapString("from port " +ofToString(port), 10, 40);
     ofDrawBitmapString("on ip localhost", 10, 60);
     ofDrawBitmapString(oscMessage, 10, 80);
+    ofDrawBitmapString(senddedoscMessage, 10, 100);
 }
 
 //--------------------------------------------------------------
