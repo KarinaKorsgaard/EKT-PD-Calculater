@@ -38,7 +38,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    int total = 0;
     ofxOscBundle bundle;
     while(receiver.hasWaitingMessages()){
         ofxOscMessage msg;
@@ -57,6 +57,7 @@ void ofApp::update(){
                         sendMessage.addInt32Arg(1);
                         bundle.addMessage(sendMessage);
                         sendMessage.clear();
+                        total ++;
                         
                         msg.clear();
                     }else if(msg.getArgAsInt32(0)==0){
@@ -68,7 +69,6 @@ void ofApp::update(){
                         sendMessage.clear();
 
                     }
-                    
                 }
                 
                 else if (msg.getAddress()==tablenames[i]+othernames[u]){
@@ -108,7 +108,7 @@ void ofApp::update(){
     
 
     //averaged values;
-    float total = 0;
+    //float total = 0;
     float xAdded = 0;
     float yAdded = 0;
     float rotAdded = 0;
