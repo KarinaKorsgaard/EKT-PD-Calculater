@@ -41,10 +41,12 @@ void ofApp::update(){
     
     ofxOscBundle bundle;
     while(receiver.hasWaitingMessages()){
-        ofxOscMessage msg;
+        
         ofxOscMessage sendMessage;
+        ofxOscMessage msg;
         
         receiver.getNextMessage(msg);
+        
         oscMessage = msg.getAddress();
         for(int i = 0; i<tablenames.size(); i++){
             for(int u = 0; u<othernames.size(); u++){
@@ -58,7 +60,7 @@ void ofApp::update(){
                         bundle.addMessage(sendMessage);
                         sendMessage.clear();
                         
-                        msg.clear();
+                        
                     }else if(msg.getArgAsInt32(0)==0){
                         buttons[i*6+u].on=false;
                         msg.clear();
@@ -66,6 +68,8 @@ void ofApp::update(){
                         sendMessage.addInt32Arg(0);
                         bundle.addMessage(sendMessage);
                         sendMessage.clear();
+                        
+                        
 
                     }
                 }
@@ -90,15 +94,13 @@ void ofApp::update(){
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
                     
-                    msg.clear();
+               
                     
                     
-                }else{
-                    msg.clear();
                 }
             }
         }
-        msg.clear();
+       
     }
     
     
@@ -189,47 +191,40 @@ void ofApp::draw(){
     ofDrawBitmapString("from port " +ofToString(port), 10, 40);
     ofDrawBitmapString("on ip localhost", 10, 60);
     ofDrawBitmapString(oscMessage, 10, 80);
-    
-    
-    for(int i = 0; i<buttons.size();i++){
-        if(buttons[i].on){
-            string s = ofToString(buttons[i].table)+" "+ofToString(buttons[i].obj)+" "+ofToString(buttons[i].x) +" "+ofToString(buttons[i].y) +" "+ofToString(buttons[i].rot) ;
-            ofDrawBitmapString(s, 10, 100+i*20);
-        }
-    }
+
     
 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    ofxOscBundle bundle;
-    for(int i = 0 ; i<buttons.size();i++){
-        buttons[i].on = true;
-        buttons[i].x = ofRandom(1);
-        buttons[i].y = ofRandom(1);
-        buttons[i].rot = ofRandom(1);
-        
-        
-        
-        ofxOscMessage sendMessage;
-        
-        sendMessage.setAddress("/toVDMX/"+ofToString(buttons[i].table)+"/"+ofToString(buttons[i].obj)+"/ROT");
-        sendMessage.addFloatArg(buttons[i].rot);
-        bundle.addMessage(sendMessage);
-        sendMessage.clear();
-        
-        sendMessage.setAddress("/toVDMX/"+ofToString(buttons[i].table)+"/"+ofToString(buttons[i].obj)+"/X");
-        sendMessage.addFloatArg(buttons[i].x);
-        bundle.addMessage(sendMessage);
-        sendMessage.clear();
-        
-        sendMessage.setAddress("/toVDMX/"+ofToString(buttons[i].table)+"/"+ofToString(buttons[i].obj)+"/Y");
-        sendMessage.addFloatArg(buttons[i].y);
-        bundle.addMessage(sendMessage);
-        sendMessage.clear();
-    }
-    sender.sendBundle(bundle);
+//    ofxOscBundle bundle;
+//    for(int i = 0 ; i<buttons.size();i++){
+//        buttons[i].on = true;
+//        buttons[i].x = ofRandom(1);
+//        buttons[i].y = ofRandom(1);
+//        buttons[i].rot = ofRandom(1);
+//        
+//        
+//        
+//        ofxOscMessage sendMessage;
+//        
+//        sendMessage.setAddress("/toVDMX/"+ofToString(buttons[i].table)+"/"+ofToString(buttons[i].obj)+"/ROT");
+//        sendMessage.addFloatArg(buttons[i].rot);
+//        bundle.addMessage(sendMessage);
+//        sendMessage.clear();
+//        
+//        sendMessage.setAddress("/toVDMX/"+ofToString(buttons[i].table)+"/"+ofToString(buttons[i].obj)+"/X");
+//        sendMessage.addFloatArg(buttons[i].x);
+//        bundle.addMessage(sendMessage);
+//        sendMessage.clear();
+//        
+//        sendMessage.setAddress("/toVDMX/"+ofToString(buttons[i].table)+"/"+ofToString(buttons[i].obj)+"/Y");
+//        sendMessage.addFloatArg(buttons[i].y);
+//        bundle.addMessage(sendMessage);
+//        sendMessage.clear();
+//    }
+//    sender.sendBundle(bundle);
     
     
 }
