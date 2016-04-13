@@ -92,6 +92,7 @@ void ofApp::update(){
                     
                     buttons[i*6+u].rot=msg.getArgAsFloat(2)/(2*PI);
                     sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/ROT");
+                    buttons[i*6+u].update();
                     sendMessage.addFloatArg(buttons[i*6+u].rotation);
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
@@ -130,7 +131,6 @@ void ofApp::update(){
         
         
         for(int i = 0; i<buttons.size();i++){
-            buttons[i].update();
             if(buttons[i].on){
                 total ++;
                 xAdded += buttons[i].x;
