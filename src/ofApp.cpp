@@ -38,7 +38,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    int total = 0;
+    
     ofxOscBundle bundle;
     while(receiver.hasWaitingMessages()){
         ofxOscMessage msg;
@@ -57,7 +57,6 @@ void ofApp::update(){
                         sendMessage.addInt32Arg(1);
                         bundle.addMessage(sendMessage);
                         sendMessage.clear();
-                        total ++;
                         
                         msg.clear();
                     }else if(msg.getArgAsInt32(0)==0){
@@ -108,7 +107,7 @@ void ofApp::update(){
     
 
     //averaged values;
-    //float total = 0;
+    float total = 0;
     float xAdded = 0;
     float yAdded = 0;
     float rotAdded = 0;
@@ -190,7 +189,16 @@ void ofApp::draw(){
     ofDrawBitmapString("from port " +ofToString(port), 10, 40);
     ofDrawBitmapString("on ip localhost", 10, 60);
     ofDrawBitmapString(oscMessage, 10, 80);
-    ofDrawBitmapString(senddedoscMessage, 10, 100);
+    
+    
+    for(int i = 0; i<buttons.size();i++){
+        if(buttons[i].on){
+            string s = ofToString(buttons[i].table)+" "+ofToString(buttons[i].obj)+" "+ofToString(buttons[i].x) +" "+ofToString(buttons[i].y) +" "+ofToString(buttons[i].rot) ;
+            ofDrawBitmapString(s, 10, 100+i*20);
+        }
+    }
+    
+
 }
 
 //--------------------------------------------------------------
