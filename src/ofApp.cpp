@@ -78,19 +78,20 @@ void ofApp::update(){
                 
                 else if (msg.getAddress()==tablenames[i]+othernames[u]){
                     
-                    buttons[i*6+u].x=msg.getArgAsFloat(0)/127;
+                    buttons[i*6+u].x=1-msg.getArgAsFloat(0)/127;
+                    
                     sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/X");
                     sendMessage.addFloatArg(buttons[i*6+u].x);
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
                     
-                    buttons[i*6+u].y=(127-msg.getArgAsFloat(1))/127;
+                    buttons[i*6+u].y=msg.getArgAsFloat(1)/127;
                     sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/Y");
                     sendMessage.addFloatArg(buttons[i*6+u].y);
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
                     
-                    buttons[i*6+u].rot=msg.getArgAsFloat(2)/(2*PI);
+                    buttons[i*6+u].rot=1-msg.getArgAsFloat(2)/(2*PI);
                     sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/R");
                     buttons[i*6+u].update();
                     sendMessage.addFloatArg(buttons[i*6+u].rotation);
