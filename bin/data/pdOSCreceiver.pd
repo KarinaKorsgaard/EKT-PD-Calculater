@@ -1,12 +1,12 @@
-#N canvas 96 75 1249 646 10;
+#N canvas 98 155 1249 646 10;
 #X declare -lib mrpeach;
 #X obj 118 -236 import mrpeach;
 #X obj 118 -199 udpreceive 3000;
-#X obj 113 198 udpsend;
-#X msg 139 150 disconnect;
+#X obj 113 303 udpsend;
+#X msg 139 255 disconnect;
 #X obj 117 -116 routeOSC /toVDMX;
 #X obj 117 -91 packOSC;
-#X msg 129 130 connect localhost 4444;
+#X msg 129 235 connect localhost 4444;
 #X obj 116 -175 unpackOSC;
 #X obj 116 -146 pipelist;
 #N canvas 415 23 747 611 xValues 0;
@@ -355,6 +355,9 @@
 #X floatatom 442 -159 5 0 0 0 - - -;
 #X floatatom 479 -161 5 0 0 0 - - -;
 #X text 406 -209 total count of objects: all \, As \, Bs ... Fs.;
+#X obj 185 62 scale 0 72 0 400;
+#X floatatom 184 86 5 0 0 0 - - -;
+#X msg 351 168 send \$1;
 #X connect 1 0 7 0;
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
@@ -367,6 +370,7 @@
 #X connect 8 0 10 0;
 #X connect 8 0 11 0;
 #X connect 8 0 14 0;
+#X connect 9 0 22 0;
 #X connect 13 0 12 0;
 #X connect 13 1 15 0;
 #X connect 13 2 16 0;
@@ -375,3 +379,4 @@
 #X connect 13 5 19 0;
 #X connect 13 6 20 0;
 #X connect 14 0 13 0;
+#X connect 22 0 23 0;
