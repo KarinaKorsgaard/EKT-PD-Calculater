@@ -84,7 +84,7 @@ void ofApp::update(){
                     bundle.addMessage(sendMessage);
                     sendMessage.clear();
                     
-                    buttons[i*6+u].y=(127-msg.getArgAsFloat(1))/127;;
+                    buttons[i*6+u].y=(msg.getArgAsFloat(1))/127;;
                     sendMessage.setAddress("/toVDMX/"+ofToString(i+1)+"/"+ofToString(u+1)+"/Y");
                     sendMessage.addFloatArg(buttons[i*6+u].y);
                     bundle.addMessage(sendMessage);
